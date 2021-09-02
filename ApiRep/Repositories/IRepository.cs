@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ApiRep.Models
 {
-    interface IRepository<T>: IDisposable
+    public interface IRepository<T>: IDisposable
     {
         IEnumerable<Object> GetAll();
         T Get(int id);

@@ -134,3 +134,5 @@ E:\projects\ApiRep\ApiRep\obj\Debug\netcoreapp3.1\ApiRep.RazorTargetAssemblyInfo
 E:\projects\ApiRep\ApiRep\obj\Debug\netcoreapp3.1\ApiRep.csproj.CopyComplete
 E:\projects\ApiRep\ApiRep\obj\Debug\netcoreapp3.1\ApiRep.genruntimeconfig.cache
 E:\projects\ApiRep\ApiRep\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\projects\ApiRep\ApiRep\bin\Debug\netcoreapp3.1\Autofac.dll
+E:\projects\ApiRep\ApiRep\bin\Debug\netcoreapp3.1\Autofac.Extensions.DependencyInjection.dll

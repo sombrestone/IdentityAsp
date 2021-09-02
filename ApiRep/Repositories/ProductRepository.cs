@@ -8,9 +8,7 @@ namespace ApiRep.Models
     public class ProductRepository: RepositoryBase<Product>
     {
 
-        public ProductRepository(AppIndContext db) : base(db) { }
-
-        //public ProductRepository() : base() { }
+        public ProductRepository(AppIndContext db) : base(db) {}
 
         public override IEnumerable<Object> GetAll()
         {

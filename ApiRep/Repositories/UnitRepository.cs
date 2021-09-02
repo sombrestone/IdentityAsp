@@ -9,8 +9,6 @@ namespace ApiRep.Models
     {
         public UnitRepository(AppIndContext db) : base(db) { }
 
-        //public UnitRepository() : base() { }
-
         public override IEnumerable<Object> GetAll()
         {
             return (from units in db.Units select units).ToList();

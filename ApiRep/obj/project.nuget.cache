@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "/3IMiBCZU9ATBnwPJgZp/zEncKjND3/A3g7bCBDWnpPxXlZY7RNmGhrczm7A0Mca4AVGTlLWjaexWswsAxeuYw==",
+  "dgSpecHash": "tTXdu++Ug3R+aCBO3lBy/Ah/8ZRWMw/lxej9jhwlFP/h97j4MV0HEV5s1lnn3J60v+NsKNA951B0QMihxQy2OQ==",
   "success": true,
   "projectFilePath": "E:\\projects\\ApiRep\\ApiRep\\ApiRep.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\kir79\\.nuget\\packages\\autofac\\6.0.0\\autofac.6.0.0.nupkg.sha512",
+    "C:\\Users\\kir79\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.1.0\\autofac.extensions.dependencyinjection.7.1.0.nupkg.sha512",
     "C:\\Users\\kir79\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\kir79\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\3.1.10\\microsoft.aspnetcore.authentication.jwtbearer.3.1.10.nupkg.sha512",
     "C:\\Users\\kir79\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\5.0.9\\microsoft.aspnetcore.cryptography.internal.5.0.9.nupkg.sha512",

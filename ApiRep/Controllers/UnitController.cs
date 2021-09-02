@@ -14,32 +14,32 @@ namespace ApiRep.Controllers
     [ApiController]
     public class UnitController : ControllerBase
     {
-        IRepository<Unit> db;
+        IRepository<Unit> repository;
 
-        public UnitController(AppIndContext db)
+        public UnitController(IRepository<Unit> repository)
         {
-            this.db = new UnitRepository(db);
+            this.repository = repository;
         }
 
        
         [HttpGet]
         public IEnumerable<Object> GetAll()
         {
-            return db.GetAll();
+            return repository.GetAll();
         }
 
         [HttpGet("{id}")]
         public Object Get(int id)
         {
-            return db.Get(id);
+            return repository.Get(id);
         }
 
         [HttpPost]
         public ActionResult New(Unit unit)
         {
             if (unit == null) return BadRequest();
-            db.Create(unit);
-            db.Save();
+            repository.Create(unit);
+            repository.Save();
             return Ok(unit);
         }
 
@@ -47,19 +47,19 @@ namespace ApiRep.Controllers
         public ActionResult Update(Unit unit)
         {
             if (unit == null) return BadRequest();
-            db.Update(unit);
+            repository.Update(unit);
 
-            db.Save();
+            repository.Save();
             return Ok(unit);
         }
 
         [HttpDelete("{id}")]
         public ActionResult Del(int id)
         {
-            var unit = db.Get(id);
+            var unit = repository.Get(id);
             if (unit == null) return NotFound();
-            db.Delete(id);
-            db.Save();
+            repository.Delete(id);
+            repository.Save();
             return Ok(new { Message = "delete success" });
         }
     }

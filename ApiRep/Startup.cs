@@ -16,6 +16,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using ApiRep.Infrastructure;
+using Autofac;
 
 namespace ApiRep
 {
@@ -27,6 +28,11 @@ namespace ApiRep
         }
 
         public IConfiguration Configuration { get; }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterModule(new AutofacModule());
+        }
 
         public void ConfigureServices(IServiceCollection services)
         {

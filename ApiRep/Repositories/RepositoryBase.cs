@@ -14,6 +14,9 @@ namespace ApiRep.Models
             this.db = db;
         }
 
+       // public RepositoryBase() { }
+
+
         public abstract IEnumerable<Object> GetAll();
         public abstract T Get(int id);
         public abstract void Create(T item);

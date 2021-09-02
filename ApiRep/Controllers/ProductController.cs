@@ -15,31 +15,31 @@ namespace ApiRep.Controllers
     public class ProductController : ControllerBase
     {
 
-        IRepository<Product> db;
+        IRepository<Product> repository;
 
-        public ProductController(AppIndContext db)
+        public ProductController(IRepository<Product> repository)
         {
-            this.db = new ProductRepository(db);
+            this.repository = repository;
         }
 
         [HttpGet]
         public IEnumerable<Object> GetAll()
         {
-            return db.GetAll();
+            return repository.GetAll();
         }
 
         [HttpGet("{id}")]
         public Object Get(int id)
         {
-            return db.Get(id);
+            return repository.Get(id);
         }
 
         [HttpPost]
         public ActionResult New(Product product)
         {
             if (product == null) return BadRequest();
-            db.Create(product);
-            db.Save();
+            repository.Create(product);
+            repository.Save();
             return Ok(product);
         }
 
@@ -47,19 +47,19 @@ namespace ApiRep.Controllers
         public ActionResult Update(Product product)
         {
             if (product == null) return BadRequest();
-            db.Update(product);
+            repository.Update(product);
 
-            db.Save();
+            repository.Save();
             return Ok(product);
         }
 
         [HttpDelete("{id}")]
         public ActionResult Del(int id)
         {
-            var product = db.Get(id);
+            var product = repository.Get(id);
             if (product == null) return NotFound();
-            db.Delete(id);
-            db.Save();
+            repository.Delete(id);
+            repository.Save();
             return Ok(new { Message="delete success"});
         }
 
