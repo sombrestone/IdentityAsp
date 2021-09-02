@@ -13,7 +13,7 @@ namespace ApiRep.Infrastructure
     {
         public void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            if (filterContext.HttpContext.Request.Host.Host=="localhost")
+            if (filterContext.HttpContext.Request.Host.Host!="localhost")
             {
                 filterContext.Result= new ConflictObjectResult("");
             }
