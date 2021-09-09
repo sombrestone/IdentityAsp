@@ -58,7 +58,9 @@ namespace ApiRep
                         ValidIssuer = Configuration["JWT:ValidIssuer"],
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
                     };
-                }); 
+                });
+
+            services.AddSignalR();
 
             services.AddControllers(config=> {
                 config.Filters.Add(new BanLocalhost());
@@ -81,6 +83,7 @@ namespace ApiRep
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapHub<MessageHub>("/dblog");
                 endpoints.MapControllers();
             });
         }

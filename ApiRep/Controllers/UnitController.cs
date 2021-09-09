@@ -6,6 +6,7 @@ using ApiRep.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 
 namespace ApiRep.Controllers
 {
@@ -15,10 +16,12 @@ namespace ApiRep.Controllers
     public class UnitController : ControllerBase
     {
         IRepository<Unit> repository;
+        IHubContext<MessageHub> hubContext;
 
-        public UnitController(IRepository<Unit> repository)
+        public UnitController(IRepository<Unit> repository, IHubContext<MessageHub> hubContext)
         {
             this.repository = repository;
+            this.hubContext = hubContext;
         }
 
        
@@ -40,6 +43,7 @@ namespace ApiRep.Controllers
             if (unit == null) return BadRequest();
             repository.Create(unit);
             repository.Save();
+            sendToClientLog($"Добавлена ед. изм. \"{unit.Name}\"");
             return Ok(unit);
         }
 
@@ -48,8 +52,8 @@ namespace ApiRep.Controllers
         {
             if (unit == null) return BadRequest();
             repository.Update(unit);
-
             repository.Save();
+            sendToClientLog($"Изменена ед. изм. \"{unit.Name}\"");
             return Ok(unit);
         }
 
@@ -60,7 +64,13 @@ namespace ApiRep.Controllers
             if (unit == null) return NotFound();
             repository.Delete(id);
             repository.Save();
+            sendToClientLog($"Удалена ед. изм. \"{unit.Name}\"");
             return Ok(new { Message = "delete success" });
+        }
+
+        async void sendToClientLog(string text)
+        {
+            await hubContext.Clients.All.SendAsync("addMessage", text);
         }
     }
 }
